@@ -5,7 +5,7 @@ on:
     branches:
       - main  # Automatically trigger the workflow on push to the main branch
     paths:
-      - 'server/**'  # Only trigger the workflow if files in the 'server' folder change
+      - '**'  # Only trigger the workflow if files in the 'server' folder change
 
 jobs:
   deploy-backend:
