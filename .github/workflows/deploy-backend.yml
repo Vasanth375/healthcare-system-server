@@ -19,7 +19,7 @@ jobs:
       # Step 2: Install dependencies for the backend
       - name: Install Dependencies
         run: |
-          cd server  # Ensure you're in the server folder
+          # cd server  # Ensure you're in the server folder
           npm install
 
       # Step 3: Deploy to OnRender
