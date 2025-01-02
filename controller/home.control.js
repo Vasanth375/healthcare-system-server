@@ -1,5 +1,5 @@
 const home = (req, res) => {
-  res.send({ Message: "Test-1" });
+  res.send({ Message: "Test1" });
 };
 
 module.exports = home;
