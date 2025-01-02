@@ -2,10 +2,10 @@ name: Deploy Backend to OnRender
 
 on:
   push:
-    paths:
-      - 'server/**'  # Adjust this path to match your backend folder name
     branches:
       - main
+    paths:
+      - 'server/**'  # Optional: Trigger only when the 'server' folder is modified
   workflow_dispatch:
 
 jobs:
@@ -13,20 +13,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout the code
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # Step 2: Install dependencies and build the backend
       - name: Install Dependencies
         run: |
-          # cd server  # If your server is inside a "server" folder, adjust as needed
+          cd server  # If your server is inside the "server" folder, ensure you're in the correct directory
           npm install
 
-      # Step 3: Deploy to OnRender
       - name: Deploy to OnRender
         env:
           ONRENDER_TOKEN: ${{ secrets.ONRENDER_TOKEN }}
         run: |
           curl -X POST "https://api.onrender.com/v1/services/YOUR_SERVICE_ID/deploy" \
-          -H "Authorization: Bearer $ONRENDER_TOKEN"
+            -H "Authorization: Bearer $ONRENDER_TOKEN"
