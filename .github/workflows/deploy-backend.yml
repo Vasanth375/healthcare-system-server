@@ -3,22 +3,26 @@ name: Deploy Backend to OnRender
 on:
   push:
     branches:
-      - main
+      - main  # Automatically trigger the workflow on push to the main branch
     paths:
-      - 'server/**'  # Optional: Trigger only when the 'server' folder is modified
+      - 'server/**'  # Only trigger the workflow if files in the 'server' folder change
+
 jobs:
   deploy-backend:
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1: Checkout the code
       - name: Checkout Code
         uses: actions/checkout@v4
 
+      # Step 2: Install dependencies for the backend
       - name: Install Dependencies
         run: |
-          # cd server  # If your server is inside the "server" folder, ensure you're in the correct directory
+          cd server  # Ensure you're in the server folder
           npm install
 
+      # Step 3: Deploy to OnRender
       - name: Deploy to OnRender
         env:
           ONRENDER_TOKEN: ${{ secrets.ONRENDER_TOKEN }}
