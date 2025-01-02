@@ -18,7 +18,7 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          cd server  # If your server is inside the "server" folder, ensure you're in the correct directory
+          # cd server  # If your server is inside the "server" folder, ensure you're in the correct directory
           npm install
 
       - name: Deploy to OnRender
